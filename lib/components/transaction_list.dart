@@ -15,7 +15,7 @@ class TransactionList extends StatelessWidget {
         itemCount: transactions.length,
         itemBuilder: (ctx, index) {
           final tr = transactions[index];
-          return TransactionCard(transaction: tr);
+          return TransactionCard(tr);
         },
       ),
     );

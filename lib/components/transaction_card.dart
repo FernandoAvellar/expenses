@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
-  const TransactionCard({super.key, required this.transaction});
+  const TransactionCard(this.transaction, {super.key});
 
   final Transaction transaction;
 
