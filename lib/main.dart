@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:expenses/components/header.dart';
+import 'package:expenses/components/transaction_graph.dart';
+import 'package:expenses/components/transaction_user.dart';
 
-main() => runApp(ExpensesApp());
+main() => runApp(const ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
   const ExpensesApp({super.key});
@@ -11,10 +14,10 @@ class ExpensesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Expenses App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -24,17 +27,15 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Despesas Pessoais'),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Text(
-          'Versão inicial!',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
+    return const Scaffold(
+      appBar: Header(),
+      body: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TransactionGraph(),
+          TransactionUser(),
+        ],
       ),
     );
   }
