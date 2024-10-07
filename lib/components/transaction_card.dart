@@ -18,13 +18,13 @@ class TransactionCard extends StatelessWidget {
               vertical: 2,
               horizontal: 15,
             ),
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(10),
             child: CircleAvatar(
-              radius: 40,
+              radius: 45,
               backgroundColor: Theme.of(context).colorScheme.inversePrimary,
               child: Text(
                 'R\$ ${transaction.value.toStringAsFixed(2)}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ),
           ),
@@ -34,11 +34,11 @@ class TransactionCard extends StatelessWidget {
               Text(
                 transaction.title,
                 textAlign: TextAlign.start,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               Text(
                 DateFormat('d MMM y').format(transaction.date),
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.grey, fontSize: 16),
               ),
             ],
           ),

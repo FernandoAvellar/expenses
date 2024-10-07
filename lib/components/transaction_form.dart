@@ -20,7 +20,8 @@ class _TransactionFormState extends State<TransactionForm> {
 
     if (title.isEmpty || value <= 0) return;
 
-    widget.onSubmit(title, value);
+    widget.onSubmit(
+        title, value); //acesso a variáveis do nosso componente stateful
   }
 
   @override

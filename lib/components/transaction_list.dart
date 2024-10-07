@@ -13,7 +13,7 @@ class TransactionList extends StatelessWidget {
       height: 400,
       child: ListView.builder(
         itemCount: transactions.length,
-        itemBuilder: (ctx, index) {
+        itemBuilder: (_, index) {
           final tr = transactions[index];
           return TransactionCard(tr);
         },
