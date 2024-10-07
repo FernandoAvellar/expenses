@@ -41,7 +41,13 @@ class TransactionCard extends StatelessWidget {
                 style: TextStyle(color: Colors.grey),
               ),
             ],
-          )
+          ),
+          // IconButton(
+          //   iconSize: 40,
+          //   icon: const Icon(Icons.delete_rounded),
+          //   color: Colors.red[400],
+          //   onPressed: () {},
+          // ),
         ],
       ),
     );

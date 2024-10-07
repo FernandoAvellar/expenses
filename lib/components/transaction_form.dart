@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
-class TransactionForm extends StatefulWidget {
-  const TransactionForm({super.key});
+class TransactionForm extends StatelessWidget {
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
 
-  @override
-  State<TransactionForm> createState() => _TransactionFormState();
-}
+  final void Function(String, double) onSubmit;
 
-class _TransactionFormState extends State<TransactionForm> {
-  String title = '';
-  double value = 0;
+  TransactionForm({super.key, required this.onSubmit});
+
+  _submitForm() {
+    final title = titleController.text;
+    final value = double.tryParse(valueController.text) ?? 0.0;
+
+    if (title.isEmpty || value <= 0) return;
+
+    onSubmit(title, value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,43 +25,31 @@ class _TransactionFormState extends State<TransactionForm> {
         child: Column(
           children: [
             TextField(
+              controller: titleController,
+              onSubmitted: (_) => _submitForm,
               decoration: InputDecoration(
                 labelText: 'Título',
               ),
-              onChanged: (value) => {
-                setState(() {
-                  title = value;
-                }),
-              },
             ),
             TextField(
-              keyboardType: TextInputType.number,
+              controller: valueController,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
                 labelText: 'Valor (R\$)',
               ),
-              onChanged: (v) => {
-                setState(() {
-                  value = double.parse(v);
-                }),
-              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
+                  onPressed: _submitForm(),
                   child: const Text(
                     'Nova Transação',
                     style: TextStyle(
-                      color: Colors.purple,
+                      color: Colors.green,
                     ),
                   ),
-                  onPressed: () {
-                    print('$title - $value');
-                    setState(() {
-                      title = '';
-                      value = 0;
-                    });
-                  },
                 ),
               ],
             ),
