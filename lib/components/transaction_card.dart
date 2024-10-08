@@ -15,7 +15,7 @@ class TransactionCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
       child: ListTile(
         leading: CircleAvatar(
-          radius: 40,
+          radius: 30,
           child: Padding(
             padding: const EdgeInsets.all(6.0),
             child: FittedBox(
