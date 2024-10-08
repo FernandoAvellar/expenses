@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
-  const TransactionCard(this.transaction, {super.key});
-
   final Transaction transaction;
+  final void Function(String id) onDelete;
+
+  const TransactionCard(this.transaction, this.onDelete, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class TransactionCard extends StatelessWidget {
         leading: CircleAvatar(
           radius: 40,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(6.0),
             child: FittedBox(
               child: Text('R\$${transaction.value}'),
             ),
@@ -33,7 +34,9 @@ class TransactionCard extends StatelessWidget {
           iconSize: 30,
           icon: const Icon(Icons.delete_rounded),
           color: Colors.black,
-          onPressed: () {},
+          onPressed: () {
+            onDelete(transaction.id);
+          },
         ),
       ),
     );

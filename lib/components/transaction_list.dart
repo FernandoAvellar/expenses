@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final void Function(String id) onDelete;
 
-  const TransactionList({super.key, required this.transactions});
+  const TransactionList(
+      {super.key, required this.transactions, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class TransactionList extends StatelessWidget {
               itemCount: transactions.length,
               itemBuilder: (_, index) {
                 final tr = transactions[index];
-                return TransactionCard(tr);
+                return TransactionCard(tr, onDelete);
               },
             ),
     );

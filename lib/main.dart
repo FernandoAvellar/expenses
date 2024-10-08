@@ -15,7 +15,7 @@ class ExpensesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Expenses App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true,
       ),
       home: MyHomePage(),
@@ -58,6 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.pop(context); //Fecha o modal
   }
 
+  _removeTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((transaction) => transaction.id == id);
+    });
+  }
+
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -83,17 +89,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              width: double.infinity,
-              child: Card(
-                elevation: 5.0,
-                child: Text(
-                  'Gráfico',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
-            TransactionList(transactions: _transactions),
+            // SizedBox(
+            //   width: double.infinity,
+            //   child: Card(
+            //     elevation: 5.0,
+            //     child: Text(
+            //       'Gráfico',
+            //       style: Theme.of(context).textTheme.headlineMedium,
+            //     ),
+            //   ),
+            // ),
+            TransactionList(
+                transactions: _transactions, onDelete: _removeTransaction),
           ],
         ),
       ),
