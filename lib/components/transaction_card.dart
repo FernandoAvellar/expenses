@@ -10,45 +10,31 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(
-              vertical: 2,
-              horizontal: 15,
-            ),
-            padding: EdgeInsets.all(10),
-            child: CircleAvatar(
-              radius: 45,
-              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              child: Text(
-                'R\$ ${transaction.value.toStringAsFixed(2)}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
+      elevation: 5,
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+      child: ListTile(
+        leading: CircleAvatar(
+          radius: 40,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: FittedBox(
+              child: Text('R\$${transaction.value}'),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                transaction.title,
-                textAlign: TextAlign.start,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              Text(
-                DateFormat('d MMM y').format(transaction.date),
-                style: TextStyle(color: Colors.grey, fontSize: 16),
-              ),
-            ],
-          ),
-          // IconButton(
-          //   iconSize: 40,
-          //   icon: const Icon(Icons.delete_rounded),
-          //   color: Colors.red[400],
-          //   onPressed: () {},
-          // ),
-        ],
+        ),
+        title: Text(
+          transaction.title,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        subtitle: Text(
+          DateFormat('d MMM y').format(transaction.date),
+        ),
+        trailing: IconButton(
+          iconSize: 30,
+          icon: const Icon(Icons.delete_rounded),
+          color: Colors.black,
+          onPressed: () {},
+        ),
       ),
     );
   }

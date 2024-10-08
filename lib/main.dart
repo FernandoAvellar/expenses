@@ -15,7 +15,7 @@ class ExpensesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Expenses App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         useMaterial3: true,
       ),
       home: MyHomePage(),
@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
+  final List<Transaction> _transactions = [
     Transaction(
         id: 't1',
         title: 'Tênis de Corrida',
@@ -81,13 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
               width: double.infinity,
               child: Card(
-                color: Theme.of(context).colorScheme.onSecondary,
                 elevation: 5.0,
                 child: Text(
                   'Gráfico',

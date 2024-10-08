@@ -11,13 +11,31 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 400,
-      child: ListView.builder(
-        itemCount: transactions.length,
-        itemBuilder: (_, index) {
-          final tr = transactions[index];
-          return TransactionCard(tr);
-        },
-      ),
+      child: transactions.isEmpty
+          ? Column(
+              children: [
+                SizedBox(height: 20),
+                Text(
+                  'Nenhuma transação cadastrada!',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                SizedBox(height: 20),
+                SizedBox(
+                  height: 200,
+                  child: Image.asset(
+                    'assets/images/waiting.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            )
+          : ListView.builder(
+              itemCount: transactions.length,
+              itemBuilder: (_, index) {
+                final tr = transactions[index];
+                return TransactionCard(tr);
+              },
+            ),
     );
   }
 }
