@@ -16,7 +16,9 @@ class ExpensesApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Expenses App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.orange,
+        ),
         useMaterial3: true,
       ),
       home: MyHomePage(),
